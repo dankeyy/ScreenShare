@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtWidgets
+from App.client import Client
 
 
 class SignIn(QtWidgets.QWidget):
@@ -6,13 +7,13 @@ class SignIn(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setup_ui()
-        self.show()
 
     def connect(self):
-        usrinput = self.username_input.toPlainText()
-        pswinput = self.password_input.toPlainText()
-        if usrinput == '111' and pswinput == '111':
-            pass
+        usr_input, psw_input = self.username_input.toPlainText(), self.password_input.toPlainText()
+        if usr_input == '111' and psw_input == '111':
+            self.close()
+            self.client_window = Client()
+            self.client_window.show()
 
     def setup_ui(self):
         self.setObjectName("signin_window")

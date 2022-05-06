@@ -1,4 +1,5 @@
 .idea/
 *.log
 tmp/
+*.py[cod]
 __pycache__

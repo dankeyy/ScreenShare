@@ -3,3 +3,4 @@
 tmp/
 *.py[cod]
 __pycache__
+*.ui

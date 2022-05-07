@@ -1,5 +1,5 @@
 from PyQt5 import QtCore, QtWidgets
-from App.client import Client
+from app.client import Client
 
 
 class SignIn(QtWidgets.QWidget):

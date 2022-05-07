@@ -2,10 +2,10 @@ from PyQt5 import QtCore, QtWidgets
 import socket
 import threading
 
-LOCAL_IP = '127.0.0.1'
+LOCAL_IP = "localhost"
 LOCAL_PORT = 8888
-HOST_IP = '79.180.60.146'
-HOST_PORT = 8888
+HOST_IP = "10.0.0.8"
+HOST_PORT = 8886
 
 
 class Client(QtWidgets.QWidget):
@@ -19,7 +19,7 @@ class Client(QtWidgets.QWidget):
     def broadcast_signal(self):
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.bind((LOCAL_IP, LOCAL_PORT))
-            s.listen()
+            s.listen(1)
             conn, addr = s.accept()
             print(f"{conn} + {addr}")
 

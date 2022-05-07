@@ -1,9 +1,9 @@
-from App.mainwindow import MainWindow
+from app.initial_screen import InitialScreen
 from PyQt5.QtWidgets import *
 import sys
 
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    client = MainWindow()
-    client.show()
+    client = InitialScreen()
     sys.exit(app.exec_())

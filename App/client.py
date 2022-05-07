@@ -1,4 +1,11 @@
 from PyQt5 import QtCore, QtWidgets
+import socket
+import threading
+
+LOCAL_IP = '127.0.0.1'
+LOCAL_PORT = 8888
+HOST_IP = '79.180.60.146'
+HOST_PORT = 8888
 
 
 class Client(QtWidgets.QWidget):
@@ -6,6 +13,19 @@ class Client(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setup_ui()
+        self.signal_thread = threading.Thread(target=self.broadcast_signal)
+        self.signal_thread.start()
+
+    def broadcast_signal(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
+            s.bind((LOCAL_IP, LOCAL_PORT))
+            s.listen()
+            conn, addr = s.accept()
+            print(f"{conn} + {addr}")
+
+    def establish_connection(self):
+        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as c:
+            c.connect((HOST_IP, HOST_PORT))
 
     def setup_ui(self):
         self.setObjectName("ClientWindow")
@@ -51,6 +71,7 @@ class Client(QtWidgets.QWidget):
         self.connect_button = QtWidgets.QPushButton(self)
         self.connect_button.setGeometry(QtCore.QRect(360, 540, 251, 51))
         self.connect_button.setObjectName("connect_button")
+        self.connect_button.clicked.connect(self.establish_connection)
 
         self.headline = QtWidgets.QTextBrowser(self)
         self.headline.setGeometry(QtCore.QRect(210, 100, 551, 71))

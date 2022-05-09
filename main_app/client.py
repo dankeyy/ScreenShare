@@ -2,9 +2,9 @@ from PyQt5 import QtCore, QtWidgets
 import socket
 import threading
 
-LOCAL_IP = "localhost"
+LOCAL_IP = ""
 LOCAL_PORT = 8888
-HOST_IP = "10.0.0.8"
+HOST_IP = ""
 HOST_PORT = 8886
 # UNFINISHED
 

@@ -1,4 +1,4 @@
-from app.signin import SignIn
+from main_app.signin import SignIn
 from ui_setup.initial_screen_ui import InitialScreenUi
 
 

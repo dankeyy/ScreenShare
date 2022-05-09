@@ -1,4 +1,4 @@
-from app.initial_screen import InitialScreen
+from main_app.initial_screen import InitialScreen
 from PyQt5.QtWidgets import *
 import sys
 

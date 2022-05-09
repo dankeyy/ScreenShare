@@ -1,6 +1,6 @@
 .idea/
+external_ui_files/
 *.log
 tmp/
 *.py[cod]
 __pycache__
-*.ui

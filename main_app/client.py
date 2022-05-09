@@ -6,6 +6,7 @@ LOCAL_IP = "localhost"
 LOCAL_PORT = 8888
 HOST_IP = "10.0.0.8"
 HOST_PORT = 8886
+# UNFINISHED
 
 
 class Client(QtWidgets.QWidget):

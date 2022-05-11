@@ -1,6 +1,8 @@
 from main_app.signin import SignIn
 from ui_setup.initial_screen_ui import InitialScreenUi
 
+# TODO ADD SIGN-UP WINDOW + DATABASE SUPPORT
+
 
 class InitialScreen(object):
 
@@ -25,4 +27,4 @@ class InitialScreen(object):
         Opens Up The Sign Up Window
         :return: None
         """
-        pass  # TODO ADD SIGN-UP WINDOW + DATABASE SUPPORT
+        pass

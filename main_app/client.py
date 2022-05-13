@@ -4,6 +4,7 @@ from ui_setup.client_window_ui import UiClientWindow
 from core_app.viewer import Viewer
 
 
+HOST_IP = socket.gethostbyname(socket.gethostname())
 CLIENT_IP = "10.0.0.6"
 PORT = 8888
 
@@ -24,6 +25,7 @@ class Client(object):
 
     def broadcast_signal(self):
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
+            s.bind((HOST_IP, 8888))
             while s:
                 user_input, addr = s.recvfrom(1024)
                 if user_input.decode('utf-8') == 'E97':

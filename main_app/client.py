@@ -2,10 +2,9 @@ import socket
 import threading
 from ui_setup.client_window_ui import UiClientWindow
 
-CLIENT_IP = ""
-CLIENT_PORT = 8888
-LOCAL_IP = ""
-LOCAL_PORT = 8886
+CLIENT_IP = "10.0.0.6"
+LOCAL_IP = "10.0.0.8"
+PORT = 8888
 
 # TODO - Get information from a text file until DB is established
 
@@ -24,10 +23,15 @@ class Client(object):
 
     def broadcast_signal(self):
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-            s.bind((LOCAL_IP, LOCAL_PORT))
+            s.bind((LOCAL_IP, PORT))
             while s:
-                print(f"{s.recvfrom(1024)}")
+                user_input, addr = s.recvfrom(1024)
+                user_input = user_input.decode('utf-8')
+                if user_input == 'E97':
+                    print(f"Signal Established {addr[0]}")
+                    s.sendto(b"Proceed E97", addr)
 
     def establish_connection(self):
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as c:
-            c.sendto(b"Hello Host", (CLIENT_IP, CLIENT_PORT))
+            c.sendto(b"E97", (CLIENT_IP, PORT))
+            print(c.recvfrom(1024))

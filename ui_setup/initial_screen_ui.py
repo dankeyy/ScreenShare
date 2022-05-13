@@ -6,9 +6,7 @@ class InitialScreenUi(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
         self.setObjectName("MainWindow")
-        self.resize(850, 500)
-        self.setMinimumSize(QtCore.QSize(850, 500))
-        self.setMaximumSize(QtCore.QSize(850, 500))
+        self.setFixedSize(QtCore.QSize(850, 500))
         self.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
 
         self.central_widget = QtWidgets.QWidget(self)

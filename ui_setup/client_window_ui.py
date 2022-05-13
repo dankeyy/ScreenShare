@@ -6,9 +6,7 @@ class UiClientWindow(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setObjectName("ClientWindow")
-        self.resize(1000, 800)
-        self.setMinimumSize(QtCore.QSize(1000, 800))
-        self.setMaximumSize(QtCore.QSize(1000, 800))
+        self.setFixedSize(QtCore.QSize(1000, 800))
 
         self.user_id = QtWidgets.QTextBrowser(self)
         self.user_id.setEnabled(True)

@@ -6,9 +6,7 @@ class SigninUi(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
         self.setObjectName("SignInWindow")
-        self.resize(450, 300)
-        self.setMinimumSize(QtCore.QSize(450, 300))
-        self.setMaximumSize(QtCore.QSize(450, 300))
+        self.setFixedSize(QtCore.QSize(450, 300))
 
         self.headline = QtWidgets.QTextBrowser(self)
         self.headline.setGeometry(QtCore.QRect(80, 50, 300, 30))

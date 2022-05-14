@@ -16,11 +16,11 @@ class Viewer(object):
         self.thread.start()
 
     def display_screen(self):
-        with open('client_screen.png', 'wb') as img:
-            image_chunks = self.s.recvfrom(2048)[0]
-            while not image_chunks == b"DONE":
-                img.write(image_chunks)
+        while self:
+            with open('client_screen.png', 'wb') as img:
                 image_chunks = self.s.recvfrom(2048)[0]
-                print(image_chunks)
-        self.window.display_image('client_screen.png')
-        # os.remove('client_screen.png')
+                while not image_chunks == b"DONE":
+                    img.write(image_chunks)
+                    image_chunks = self.s.recvfrom(2048)[0]
+            self.window.display_image('client_screen.png')
+            os.remove('client_screen.png')

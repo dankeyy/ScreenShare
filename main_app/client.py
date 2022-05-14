@@ -6,7 +6,7 @@ from core_app.sharer import Sharer
 
 
 HOST_IP = socket.gethostbyname(socket.gethostname())
-CLIENT_IP = "10.0.0.6"
+CLIENT_IP = "10.0.0.7"
 PORT = 8888
 
 # TODO - Get information from a text file until DB is established
@@ -32,7 +32,7 @@ class Client(object):
                 s.sendto(b"Proceed E97", addr)
                 s.close()
                 self.main_window.close()
-                self.sharer = Sharer(addr)
+                self.sharer = Sharer(addr[0])
 
     def establish_connection(self):
         c = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)

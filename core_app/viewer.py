@@ -1,6 +1,7 @@
 from ui_setup.viewer_ui import ViewerUi
 import socket
 import threading
+import os
 
 
 class Viewer(object):
@@ -15,11 +16,11 @@ class Viewer(object):
         self.thread.start()
 
     def display_screen(self):
-        while self:
-            with open('client_screen.png', 'wb') as img:
-                print(self.s.recvfrom(2048))
-                # image_chunks = self.s.recvfrom(2048)[0]
-                while image_chunks:
-                    img.write(image_chunks)
-                    image_chunks = self.s.recvfrom(2048)[0]
-            self.window.display_image('client_screen.png')
+        with open('client_screen.png', 'wb') as img:
+            image_chunks = self.s.recvfrom(2048)[0]
+            while not image_chunks == b"DONE":
+                img.write(image_chunks)
+                image_chunks = self.s.recvfrom(2048)[0]
+                print(image_chunks)
+        self.window.display_image('client_screen.png')
+        # os.remove('client_screen.png')

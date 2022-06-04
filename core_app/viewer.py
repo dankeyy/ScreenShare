@@ -18,9 +18,9 @@ class Viewer(object):
     def display_screen(self):
         while self:
             with open('client_screen.png', 'wb') as img:
-                image_chunks = self.s.recvfrom(2048)[0]
+                image_chunks = self.s.recvfrom(8192)[0]
                 while not image_chunks == b"DONE":
                     img.write(image_chunks)
-                    image_chunks = self.s.recvfrom(2048)[0]
+                    image_chunks = self.s.recvfrom(8192)[0]
             self.window.display_image('client_screen.png')
-            os.remove('client_screen.png')
+            # os.remove('client_screen.png')

@@ -15,8 +15,8 @@ class Sharer(object):
         while self:
             mss().shot(mon=1, output='screen.png')
             with open('screen.png', 'rb') as img:
-                image_chunks = img.read(2048)
+                image_chunks = img.read(8192)
                 while image_chunks:
                     self.s.sendto(image_chunks, (self.viewer_addr, 8886))
-                    image_chunks = img.read(2048)
+                    image_chunks = img.read(8192)
                 self.s.sendto(b"DONE", (self.viewer_addr, 8886))

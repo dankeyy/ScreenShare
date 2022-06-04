@@ -11,3 +11,5 @@ class ViewerUi(QtWidgets.QLabel):
 
     def display_image(self, img_dir):
         self.setPixmap(QPixmap(img_dir))
+        self.setScaledContents(True)
+        self.update()
